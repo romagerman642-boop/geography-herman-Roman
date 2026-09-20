@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="uk" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Географічні рекорди Рівненщини | Автор: Герман Роман</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,400&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: {
+                            850: '#044e3a',
+                            950: '#022c22',
+                        },
+                        amber: {
+                            450: '#f59e0b',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #022c22;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #059669;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #10b981;
+        }
+        
+        .glass-card {
+            background: rgba(6, 78, 59, 0.25);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(16, 185, 129, 0.15);
+        }
+
+        .glass-card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .glass-card-hover:hover {
+            transform: translateY(-6px);
+            border-color: rgba(245, 158, 11, 0.4);
+            box-shadow: 0 20px 30px -10px rgba(4, 120, 87, 0.3);
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FDE68A 0%, #F59E0B 50%, #D97706 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .emerald-gradient-text {
+            background: linear-gradient(135deg, #34D399 0%, #10B981 50%, #059669 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-bg {
+            background: linear-gradient(to bottom, rgba(2, 44, 34, 0.75), rgba(2, 44, 34, 0.95)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1600&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body class="bg-emerald-950 text-slate-100 font-sans selection:bg-amber-500 selection:text-emerald-950 antialiased overflow-x-hidden">
+
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 w-full z-50 glass-card bg-emerald-950/80 border-b border-emerald-800/40 py-4 px-6 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 to-emerald-500 flex items-center justify-center text-emerald-950 font-bold text-xl shadow-lg group-hover:rotate-6 transition-transform">
+                    <i class="fa-solid me-0 fa-compass"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-serif font-bold text-lg leading-tight tracking-wide text-white">Рівненщина</span>
+                    <span class="text-xs text-amber-400 tracking-widest font-semibold uppercase">Географічні Рекорди</span>
+                </div>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="#about" class="hover:text-amber-400 transition-colors">Про край</a>
+                <a href="#records" class="hover:text-amber-400 transition-colors">Головні рекорди</a>
+                <a href="#map" class="hover:text-amber-400 transition-colors">Карта чудо-локацій</a>
+                <a href="#quiz" class="hover:text-amber-400 transition-colors">Вікторина</a>
+            </div>
+
+            <!-- Author Badge in Header -->
+            <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-900/60 border border-emerald-600/30 text-xs">
+                <i class="fa-solid fa-code text-amber-400"></i>
+                <span class="text-slate-300">Створив: <strong class="text-amber-300 font-semibold">Герман Роман</strong></span>
+            </div>
+
+            <!-- Mobile Hamburger Button -->
+            <button id="mobileMenuBtn" class="md:hidden text-2xl text-emerald-400 hover:text-amber-400 focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden mt-4 pt-4 border-t border-emerald-800/50 flex flex-col space-y-3 pb-2 text-center">
+            <a href="#about" class="mobile-link py-2 hover:bg-emerald-900/40 rounded-lg">Про край</a>
+            <a href="#records" class="mobile-link py-2 hover:bg-emerald-900/40 rounded-lg">Головні рекорди</a>
+            <a href="#map" class="mobile-link py-2 hover:bg-emerald-900/40 rounded-lg">Карта чудо-локацій</a>
+            <a href="#quiz" class="mobile-link py-2 hover:bg-emerald-900/40 rounded-lg">Вікторина</a>
+            <div class="pt-2 border-t border-emerald-800/30 text-xs text-amber-300 font-medium">
+                Створив учень: Герман Роман
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-bg min-h-screen flex items-center justify-center relative pt-24 pb-16 px-6">
+        <div class="max-w-5xl mx-auto text-center relative z-10">
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-900/80 border border-amber-500/40 text-amber-300 text-xs md:text-sm font-semibold mb-6 shadow-xl backdrop-blur-md animate-bounce">
+                <i class="fa-solid fa-crown text-amber-400"></i>
+                Освітній проєкт з географії
+            </div>
+            
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold font-serif tracking-tight text-white mb-6 leading-tight">
+                Географічні Рекорди <br>
+                <span class="gold-gradient-text">Рівненщини</span>
+            </h1>
+
+            <p class="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto font-light leading-relaxed mb-10">
+                Подорож найдивовижнішими куточками рідного краю: від тисячолітніх гігантів і найчистіших глицеринових озер до базальтових шестигранників та романтичних тунелів.
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-4 items-center">
+                <a href="#records" class="px-8 py-4 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-emerald-950 font-bold shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40 transition-all flex items-center gap-3 transform hover:-translate-y-1">
+                    <span>Дослідити рекорди</span>
+                    <i class="fa-solid fa-arrow-down"></i>
+                </a>
+                <a href="#quiz" class="px-8 py-4 rounded-xl glass-card hover:bg-emerald-800/40 text-white font-semibold border border-emerald-500/30 hover:border-amber-400/50 transition-all flex items-center gap-3">
+                    <i class="fa-solid fa-graduation-cap text-amber-400"></i>
+                    <span>Пройти вікторину</span>
+                </a>
+            </div>
+
+            <!-- Author Prominent Tag -->
+            <div class="mt-12 inline-block glass-card px-6 py-3 rounded-2xl border border-amber-500/30 shadow-2xl">
+                <div class="flex items-center gap-3 text-sm">
+                    <div class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold">
+                        <i class="fa-solid fa-user-pen"></i>
+                    </div>
+                    <div class="text-left">
+                        <p class="text-xs text-slate-400 uppercase tracking-wider">Автор проєкту</p>
+                        <p class="font-bold text-amber-300">Герман Роман</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Animated Scroll Indicator -->
+        <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex flex-col items-center opacity-70 hover:opacity-100 transition-opacity">
+            <span class="text-xs text-slate-400 mb-2">Прогортайте вниз</span>
+            <div class="w-5 h-9 border-2 border-slate-400 rounded-full flex justify-center p-1">
+                <div class="w-1 h-2 bg-amber-400 rounded-full animate-bounce"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Quick Stats Counter Section -->
+    <section class="py-12 bg-emerald-900/60 border-y border-emerald-800/50 relative z-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div class="p-4 rounded-2xl glass-card">
+                    <div class="text-3xl lg:text-4xl font-extrabold gold-gradient-text font-serif mb-1">1000+</div>
+                    <div class="text-xs md:text-sm text-slate-300 font-medium">Років Юзефінському дубу</div>
+                </div>
+                <div class="p-4 rounded-2xl glass-card">
+                    <div class="text-3xl lg:text-4xl font-extrabold emerald-gradient-text font-serif mb-1">100+</div>
+                    <div class="text-xs md:text-sm text-slate-300 font-medium">Озер у краї</div>
+                </div>
+                <div class="p-4 rounded-2xl glass-card">
+                    <div class="text-3xl lg:text-4xl font-extrabold gold-gradient-text font-serif mb-1">7</div>
+                    <div class="text-xs md:text-sm text-slate-300 font-medium">Чудес України (Базальт)</div>
+                </div>
+                <div class="p-4 rounded-2xl glass-card">
+                    <div class="text-3xl lg:text-4xl font-extrabold emerald-gradient-text font-serif mb-1">659 км</div>
+                    <div class="text-xs md:text-sm text-slate-300 font-medium">Довжина річки Горинь</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Records Section -->
+    <section id="records" class="py-24 px-6 relative">
+        <div class="max-w-7xl mx-auto">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-amber-400 font-semibold text-sm tracking-widest uppercase mb-2 block">Природні та історичні надбання</span>
+                <h2 class="text-3xl md:text-5xl font-bold font-serif text-white mb-4">Сім Дивовижних Рекордів</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-amber-500 to-emerald-500 mx-auto rounded-full mb-6"></div>
+                <p class="text-slate-300 text-base md:text-lg">
+                    Кожна з цих локацій — унікальна перлина Рівненської області. Натисніть на картку, щоб дізнатися розширені цікаві факти!
+                </p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-3 mb-12" id="filterContainer">
+                <button data-filter="all" class="filter-btn active px-5 py-2 rounded-full text-sm font-semibold bg-amber-500 text-emerald-950 shadow-lg transition-all">Усі рекорди</button>
+                <button data-filter="water" class="filter-btn px-5 py-2 rounded-full text-sm font-semibold glass-card text-slate-300 hover:text-amber-400 transition-all">Водойми</button>
+                <button data-filter="nature" class="filter-btn px-5 py-2 rounded-full text-sm font-semibold glass-card text-slate-300 hover:text-amber-400 transition-all">Природа та геологія</button>
+                <button data-filter="history" class="filter-btn px-5 py-2 rounded-full text-sm font-semibold glass-card text-slate-300 hover:text-amber-400 transition-all">Історико-архітектурні</button>
+            </div>
+
+            <!-- Grid of Records -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="recordsGrid">
+
+                <!-- Record 1: Озеро Нобель та Біле -->
+                <div class="record-card glass-card glass-card-hover rounded-3xl overflow-hidden flex flex-col group cursor-pointer" data-category="water" onclick="openModal('lake-modal')">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=800&auto=format&fit=crop" alt="Озеро Біле" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-emerald-950 via-transparent to-transparent"></div>
+                        <span class="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-bold bg-amber-500 text-emerald-950 shadow-md">
+                            Водойми
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold font-serif text-white mb-2 group-hover:text-amber-300 transition-colors">
+                                Озера Нобель та Біле
+                            </h3>
+                            <p class="text-slate-300 text-sm line-clamp-3 mb-4">
+                                <strong>Озеро Нобель</strong> — найбільша водойма Рівненщини (4.99 км²). <strong class="text-amber-300">Озеро Біле</strong> — унікальне озеро з рекордним вмістом гліцерину та шовковистою водою.
+                            </p>
+                        </div>
+                        <div class="flex justify-between items-center pt-4 border-t border-emerald-800/40 text-xs text-emerald-400 font-semibold">
+                            <span><i class="fa-solid fa-droplet text-amber-400 mr-1"></i> Водний рекорд</span>
+                            <span class="flex items-center group-hover:translate-x-1 transition-transform">Детальніше <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Record 2: Річка Горинь та Случ -->
+                <div class="record-card glass-card glass-card-hover rounded-3xl overflow-hidden flex flex-col group cursor-pointer" data-category="water" onclick="openModal('river-modal')">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=800&auto=format&fit=crop" alt="Річка Горинь" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-emerald-950 via-transparent to-transparent"></div>
+                        <span class="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-bold bg-blue-500 text-white shadow-md">
+                            Водойми
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold font-serif text-white mb-2 group-hover:text-amber-300 transition-colors">
+                                Річка Горинь (і Случ)
+                            </h3>
+                            <p class="text-slate-300 text-sm line-clamp-3 mb-4">
+                                Найдовша артерія області. Загальна довжина Горині складає 659 км! Вона прорізає Полісся, утворюючи живописні меандри та мальовничі долині.
+                            </p>
+                        </div>
+                        <div class="flex justify-between items-center pt-4 border-t border-emerald-800/40 text-xs text-emerald-400 font-semibold">
+                            <span><i class="fa-solid fa-water text-amber-400 mr-1"></i> 659 км загалом</span>
+                            <span class="flex items-center group-hover:translate-x-1 transition-transform">Детальніше <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Record 3: Тунель Кохання -->
+                <div class="record-card glass-card glass-card-hover rounded-3xl overflow-hidden flex flex-col group cursor-pointer" data-category="nature" onclick="openModal('tunnel-modal')">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=800&auto=format&fit=crop" alt="Тунель Кохання" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-emerald-950 via-transparent to-transparent"></div>
+                        <span class="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-bold bg-emerald-500 text-emerald-950 shadow-md">
+                            Природа / Феномен
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold font-serif text-white mb-2 group-hover:text-amber-300 transition-colors">
+                                Тунель Кохання (Клевань)
+                            </h3>
+                            <p class="text-slate-300 text-sm line-clamp-3 mb-4">
+                                Найвідоміший у світі зелений ботанічний феномен. Залізнична колія, обрамлена ідеальною аркою із дерев довжиною близько 4 км.
+                            </p>
+                        </div>
+                        <div class="flex justify-between items-center pt-4 border-t border-emerald-800/40 text-xs text-emerald-400 font-semibold">
+                            <span><i class="fa-solid fa-heart text-amber-400 mr-1"></i> Світова популярність</span>
+                            <span class="flex items-center group-hover:translate-x-1 transition-transform">Детальніше <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Record 4: Базальтові Стовпи -->
+                <div class="record-card glass-card glass-card-hover rounded-3xl overflow-hidden flex flex-col group cursor-pointer" data-category="nature" onclick="openModal('basalt-modal')">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800&auto=format&fit=crop" alt="Базальтові стовпи" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-emerald-950 via-transparent to-transparent"></div>
+                        <span class="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-bold bg-amber-500 text-emerald-950 shadow-md">
+                            7 чудес України
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold font-serif text-white mb-2 group-hover:text-amber-300 transition-colors">
+                                Базальтові Стовпи
+                            </h3>
+                            <p class="text-slate-300 text-sm line-clamp-3 mb-4">
+                                Унікальна геологічна пам'ятка природного походження у селищі Базальтове. Рівні шестигранні колони висотою до 30 метрів.
+                            </p>
+                        </div>
+                        <div class="flex justify-between items-center pt-4 border-t border-emerald-800/40 text-xs text-emerald-400 font-semibold">
+                            <span><i class="fa-solid fa-mountain text-amber-400 mr-1"></i> Геологічне диво</span>
+                            <span class="flex items-center group-hover:translate-x-1 transition-transform">Детальніше <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Record 5: Юзефінський Дуб -->
+                <div class="record-card glass-card glass-card-hover rounded-3xl overflow-hidden flex flex-col group cursor-pointer" data-category="nature" onclick="openModal('oak-modal')">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=800&auto=format&fit=crop" alt="Юзефінський Дуб" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-emerald-950 via-transparent to-transparent"></div>
+                        <span class="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-bold bg-emerald-600 text-white shadow-md">
+                            Дендрологічний рекорд
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold font-serif text-white mb-2 group-hover:text-amber-300 transition-colors">
+                                Юзефінський Дуб Патріарх
+                            </h3>
+                            <p class="text-slate-300 text-sm line-clamp-3 mb-4">
+                                Один із найстаріших дубів України (понад 1000 років!). Обхват стовбура сягає понад 8 метрів. Живий свідок княжої доби.
+                            </p>
+                        </div>
+                        <div class="flex justify-between items-center pt-4 border-t border-emerald-800/40 text-xs text-emerald-400 font-semibold">
+                            <span><i class="fa-solid fa-tree text-amber-400 mr-1"></i> 1000+ років</span>
+                            <span class="flex items-center group-hover:translate-x-1 transition-transform">Детальніше <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Record 6: Болота Полісся / Переброди -->
+                <div class="record-card glass-card glass-card-hover rounded-3xl overflow-hidden flex flex-col group cursor-pointer" data-category="nature" onclick="openModal('swamp-modal')">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?q=80&w=800&auto=format&fit=crop" alt="Заболочені території Полісся" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-emerald-950 via-transparent to-transparent"></div>
+                        <span class="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-bold bg-teal-600 text-white shadow-md">
+                            Екосистема
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold font-serif text-white mb-2 group-hover:text-amber-300 transition-colors">
+                                Найзаболоченіший регіон
+                            </h3>
+                            <p class="text-slate-300 text-sm line-clamp-3 mb-4">
+                                Рівненське Полісся та заповідник «Переброди» — рекордна болотна система України, що є «легенями Європи» та домівкою рідкісних птахів.
+                            </p>
+                        </div>
+                        <div class="flex justify-between items-center pt-4 border-t border-emerald-800/40 text-xs text-emerald-400 font-semibold">
+                            <span><i class="fa-solid fa-leaf text-amber-400 mr-1"></i> Рамсарські угіддя</span>
+                            <span class="flex items-center group-hover:translate-x-1 transition-transform">Детальніше <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Record 7: Тараканівський Форт -->
+                <div class="record-card glass-card glass-card-hover rounded-3xl overflow-hidden flex flex-col group cursor-pointer" data-category="history" onclick="openModal('fort-modal')">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=800&auto=format&fit=crop" alt="Тараканівський Форт" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-emerald-950 via-transparent to-transparent"></div>
+                        <span class="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-bold bg-red-500 text-white shadow-md">
+                            Архітектура / Історія
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold font-serif text-white mb-2 group-hover:text-amber-300 transition-colors">
+                                Тараканівський Форт
+                            </h3>
+                            <p class="text-slate-300 text-sm line-clamp-3 mb-4">
+                                Грандіозна оборонна споруда XIX століття. Таємничий лабіринт підземних тунелів та міцних бетонно-каменних фортифікацій.
+                            </p>
+                        </div>
+                        <div class="flex justify-between items-center pt-4 border-t border-emerald-800/40 text-xs text-emerald-400 font-semibold">
+                            <span><i class="fa-solid fa-shield-halved text-amber-400 mr-1"></i> Фортеця XIX ст.</span>
+                            <span class="flex items-center group-hover:translate-x-1 transition-transform">Детальніше <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Map Locations Section -->
+    <section id="map" class="py-20 px-6 bg-emerald-900/40 relative border-t border-emerald-800/50">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col lg:flex-row gap-12 items-center">
+                
+                <div class="lg:w-1/2">
+                    <span class="text-amber-400 font-semibold text-sm tracking-widest uppercase mb-2 block">Географічна карта рекордів</span>
+                    <h2 class="text-3xl md:text-4xl font-bold font-serif text-white mb-6">Де знайти ці диво-локації?</h2>
+                    <p class="text-slate-300 mb-8 leading-relaxed">
+                        Рівненська область розташована на північному заході України. Натискайте на локації нижче, щоб швидко дізнатися їхні географічні координати та орієнтири:
+                    </p>
+
+                    <div class="space-y-4" id="locationList">
+                        <div class="p-4 rounded-xl glass-card hover:bg-emerald-800/60 transition-all cursor-pointer border-l-4 border-amber-500 flex justify-between items-center" onclick="showCoord('Тараканівський форт', '50.3636° N, 25.7153° E', 'Дубенський район')">
+                            <div>
+                                <h4 class="font-bold text-white">Тараканівський форт</h4>
+                                <p class="text-xs text-slate-400">Дубенський район</p>
+                            </div>
+                            <span class="text-xs bg-emerald-950 px-3 py-1 rounded-full text-amber-300 border border-amber-500/30">50.3636° N, 25.7153° E</span>
+                        </div>
+
+                        <div class="p-4 rounded-xl glass-card hover:bg-emerald-800/60 transition-all cursor-pointer border-l-4 border-emerald-500 flex justify-between items-center" onclick="showCoord('Базальтові Стовпи', '50.9238° N, 26.2365° E', 'с. Базальтове, Костопільщина')">
+                            <div>
+                                <h4 class="font-bold text-white">Базальтові стовпи</h4>
+                                <p class="text-xs text-slate-400">с. Базальтове</p>
+                            </div>
+                            <span class="text-xs bg-emerald-950 px-3 py-1 rounded-full text-emerald-300 border border-emerald-500/30">50.9238° N, 26.2365° E</span>
+                        </div>
+
+                        <div class="p-4 rounded-xl glass-card hover:bg-emerald-800/60 transition-all cursor-pointer border-l-4 border-emerald-500 flex justify-between items-center" onclick="showCoord('Тунель Кохання', '50.7506° N, 25.9431° E', 'смт Клевань')">
+                            <div>
+                                <h4 class="font-bold text-white">Тунель Кохання</h4>
+                                <p class="text-xs text-slate-400">смт Клевань</p>
+                            </div>
+                            <span class="text-xs bg-emerald-950 px-3 py-1 rounded-full text-emerald-300 border border-emerald-500/30">50.7506° N, 25.9431° E</span>
+                        </div>
+
+                        <div class="p-4 rounded-xl glass-card hover:bg-emerald-800/60 transition-all cursor-pointer border-l-4 border-amber-500 flex justify-between items-center" onclick="showCoord('Озеро Біле', '51.4820° N, 25.7562° E', 'Вараський район')">
+                            <div>
+                                <h4 class="font-bold text-white">Озеро Біле</h4>
+                                <p class="text-xs text-slate-400">Вараський район</p>
+                            </div>
+                            <span class="text-xs bg-emerald-950 px-3 py-1 rounded-full text-amber-300 border border-amber-500/30">51.4820° N, 25.7562° E</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Visual Interactive Coordinate Display Card -->
+                <div class="lg:w-1/2 w-full">
+                    <div class="glass-card p-8 rounded-3xl border border-amber-500/30 text-center relative overflow-hidden shadow-2xl">
+                        <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-amber-500/10 rounded-full blur-3xl"></div>
+                        <div class="w-16 h-16 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center mx-auto mb-6 text-2xl">
+                            <i class="fa-solid fa-map-location-dot"></i>
+                        </div>
+                        
+                        <h3 id="coordTitle" class="text-2xl font-serif font-bold text-white mb-2">Оберіть локацію</h3>
+                        <p id="coordSub" class="text-slate-400 text-sm mb-6">Натисніть на об'єкт зі списку ліворуч для перегляду точних географічних координат</p>
+                        
+                        <div class="p-6 rounded-2xl bg-emerald-950/80 border border-emerald-800/60 mb-6">
+                            <span class="text-xs text-slate-400 uppercase tracking-widest block mb-1">Координати GPS</span>
+                            <span id="coordVal" class="text-2xl md:text-3xl font-mono font-bold text-amber-400">--.----° N, --.----° E</span>
+                        </div>
+
+                        <div class="text-xs text-slate-400 italic">
+                            <i class="fa-solid fa-circle-info mr-1 text-amber-400"></i> Рівненщина належить до фізико-географічних зон Полісся (північ) та Лісостепу (південь).
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Quiz Section -->
+    <section id="quiz" class="py-24 px-6 relative">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="text-amber-400 font-semibold text-sm tracking-widest uppercase mb-2 block">Інтерактивна перевірка</span>
+                <h2 class="text-3xl md:text-5xl font-bold font-serif text-white mb-4">Перевір свої знання з географії Рівненщини</h2>
+                <p class="text-slate-300 text-base">Дай відповідь на 4 запитання та отримай підсумкову оцінку від Германа Романа!</p>
+            </div>
+
+            <div class="glass-card p-6 md:p-10 rounded-3xl border border-emerald-700/40 shadow-2xl relative">
+                
+                <div id="quizContainer">
+                    <!-- Progress Bar -->
+                    <div class="w-full bg-emerald-950 rounded-full h-2 mb-8 overflow-hidden">
+                        <div id="quizProgress" class="bg-gradient-to-r from-amber-500 to-emerald-400 h-full w-1/4 transition-all duration-300"></div>
+                    </div>
+
+                    <!-- Question Header -->
+                    <div class="mb-6 flex justify-between items-center text-xs font-semibold text-slate-400">
+                        <span id="questionNum">Запитання 1 з 4</span>
+                        <span class="text-amber-400"><i class="fa-solid fa-star mr-1"></i> Тест на оцінку</span>
+                    </div>
+
+                    <h3 id="questionText" class="text-xl md:text-2xl font-bold text-white mb-6 font-serif">
+                        Яке озеро є найбільшим за площею на території Рівненської області?
+                    </h3>
+
+                    <!-- Options -->
+                    <div class="space-y-3" id="optionsContainer">
+                        <!-- Options generated dynamically by JS -->
+                    </div>
+
+                    <div class="mt-8 flex justify-end">
+                        <button id="nextBtn" onclick="nextQuestion()" class="hidden px-6 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-emerald-950 font-bold transition-all flex items-center gap-2">
+                            <span>Наступне запитання</span>
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Quiz Results Container -->
+                <div id="quizResult" class="hidden text-center py-8">
+                    <div class="w-20 h-20 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center mx-auto mb-6 text-3xl">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold font-serif text-white mb-2">Вітаємо! Тест завершено!</h3>
+                    <p class="text-slate-300 text-lg mb-6">Ваш результат: <strong id="scoreText" class="text-amber-400 text-2xl font-bold">4/4</strong></p>
+                    <p id="feedbackText" class="text-emerald-300 mb-8 max-w-md mx-auto text-sm"></p>
+                    
+                    <button onclick="restartQuiz()" class="px-8 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold transition-all">
+                        <i class="fa-solid fa-rotate-right mr-2"></i>Пройти ще раз
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- MODALS FOR DETAILED INFORMATION -->
+    
+    <!-- Lake Modal -->
+    <div id="lake-modal" class="modal fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="glass-card max-w-2xl w-full p-6 md:p-8 rounded-3xl border border-amber-500/40 relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal('lake-modal')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-2xl"><i class="fa-solid fa-xmark"></i></button>
+            <span class="text-xs font-bold text-amber-400 tracking-wider uppercase">Водний Рекорд</span>
+            <h3 class="text-2xl font-bold font-serif text-white mt-1 mb-4">Озеро Нобель та Озеро Біле</h3>
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=800&auto=format&fit=crop" class="w-full h-48 object-cover rounded-2xl mb-4">
+            <div class="space-y-3 text-slate-300 text-sm leading-relaxed">
+                <p><strong>Озеро Нобель:</strong> Найбільше озеро області площею 4.99 км². Воно обрамлене мальовничими піщаними косами та очеретом, є справжнім раєм для рибалок та мігруючих птахів.</p>
+                <p><strong>Озеро Біле:</strong> Розташоване біля Володимирця (Вараський р-н). Його унікальність — унікальний склад води, де концентрація гліцерину сягає рекордних показників. Вода тут надзвичайно м'яка, прозора і створює ефект «шовку» на шкірі.</p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-emerald-800 flex justify-end">
+                <button onclick="closeModal('lake-modal')" class="px-5 py-2 bg-amber-500 text-emerald-950 font-bold rounded-xl text-sm">Закрити</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- River Modal -->
+    <div id="river-modal" class="modal fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="glass-card max-w-2xl w-full p-6 md:p-8 rounded-3xl border border-amber-500/40 relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal('river-modal')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-2xl"><i class="fa-solid fa-xmark"></i></button>
+            <span class="text-xs font-bold text-amber-400 tracking-wider uppercase">Водна Артерія</span>
+            <h3 class="text-2xl font-bold font-serif text-white mt-1 mb-4">Річка Горинь та її притока Случ</h3>
+            <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=800&auto=format&fit=crop" class="w-full h-48 object-cover rounded-2xl mb-4">
+            <div class="space-y-3 text-slate-300 text-sm leading-relaxed">
+                <p>Горинь — найдовша річка, що протікає через Рівненську область з півдня на північ. Загальна довжина річки — 659 км, а площа басейну — понад 27 000 км².</p>
+                <p>Інша велична річка краю — <strong>Случ</strong>, відома своїм мальовничим каньйоном, який часто називають «Надслучанською Швейцарією» через високі гранітні скелі та густі ліси навколо.</p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-emerald-800 flex justify-end">
+                <button onclick="closeModal('river-modal')" class="px-5 py-2 bg-amber-500 text-emerald-950 font-bold rounded-xl text-sm">Закрити</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tunnel Modal -->
+    <div id="tunnel-modal" class="modal fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="glass-card max-w-2xl w-full p-6 md:p-8 rounded-3xl border border-amber-500/40 relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal('tunnel-modal')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-2xl"><i class="fa-solid fa-xmark"></i></button>
+            <span class="text-xs font-bold text-amber-400 tracking-wider uppercase">Зелена Магія</span>
+            <h3 class="text-2xl font-bold font-serif text-white mt-1 mb-4">Тунель Кохання в Клевані</h3>
+            <img src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=800&auto=format&fit=crop" class="w-full h-48 object-cover rounded-2xl mb-4">
+            <div class="space-y-3 text-slate-300 text-sm leading-relaxed">
+                <p>Тунель Кохання у селищі Клевань — це ботанічний феномен, утворений деревами та кущами вздовж залізничної колії.</p>
+                <p>Потяг проїжджає тут щодня і зрізає гілки, підтримуючи ідеальну геометричну форму арочного тунелю. Сдивлячись всередину, створюється враження безкінечного зеленого коридору. Це місце приваблює туристів з усього світу та кінематографістів (тут знімали японську рекламу та кіно).</p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-emerald-800 flex justify-end">
+                <button onclick="closeModal('tunnel-modal')" class="px-5 py-2 bg-amber-500 text-emerald-950 font-bold rounded-xl text-sm">Закрити</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Basalt Modal -->
+    <div id="basalt-modal" class="modal fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="glass-card max-w-2xl w-full p-6 md:p-8 rounded-3xl border border-amber-500/40 relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal('basalt-modal')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-2xl"><i class="fa-solid fa-xmark"></i></button>
+            <span class="text-xs font-bold text-amber-400 tracking-wider uppercase">7 Чудес України</span>
+            <h3 class="text-2xl font-bold font-serif text-white mt-1 mb-4">Базальтові Стовпи</h3>
+            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800&auto=format&fit=crop" class="w-full h-48 object-cover rounded-2xl mb-4">
+            <div class="space-y-3 text-slate-300 text-sm leading-relaxed">
+                <p>Урочище «Базальтові стовпи» розташоване в селищі Базальтове Костопільського району. Це природна геологічна пам'ятка неймовірної краси.</p>
+                <p>Базальт застигав у формі чітких шестигранних та чотиригранних колон висотою до 30 метрів. Поруч у затопленому кар'єрі утворилося затишне озеро з бірюзовою водою та острівцем, який називають «Островом Кохання».</p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-emerald-800 flex justify-end">
+                <button onclick="closeModal('basalt-modal')" class="px-5 py-2 bg-amber-500 text-emerald-950 font-bold rounded-xl text-sm">Закрити</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Oak Modal -->
+    <div id="oak-modal" class="modal fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="glass-card max-w-2xl w-full p-6 md:p-8 rounded-3xl border border-amber-500/40 relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal('oak-modal')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-2xl"><i class="fa-solid fa-xmark"></i></button>
+            <span class="text-xs font-bold text-amber-400 tracking-wider uppercase">Дендрологічний Патріарх</span>
+            <h3 class="text-2xl font-bold font-serif text-white mt-1 mb-4">Юзефінський Дуб Патріарх</h3>
+            <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=800&auto=format&fit=crop" class="w-full h-48 object-cover rounded-2xl mb-4">
+            <div class="space-y-3 text-slate-300 text-sm leading-relaxed">
+                <p>Юзефінський дуб росте в Рокитнівському районі і має вік понад 1000 років! Його вважають одним із найстаріших дубів в Україні та всій Європі.</p>
+                <p>За місцевими переказами, цей дуб був свідком походів київського князя Ігоря 945 року. Висота дерева сягає близько 20 метрів, а обхват стовбура — понад 8.4 метри.</p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-emerald-800 flex justify-end">
+                <button onclick="closeModal('oak-modal')" class="px-5 py-2 bg-amber-500 text-emerald-950 font-bold rounded-xl text-sm">Закрити</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Swamp Modal -->
+    <div id="swamp-modal" class="modal fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="glass-card max-w-2xl w-full p-6 md:p-8 rounded-3xl border border-amber-500/40 relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal('swamp-modal')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-2xl"><i class="fa-solid fa-xmark"></i></button>
+            <span class="text-xs font-bold text-amber-400 tracking-wider uppercase">Екологічний Рекорд</span>
+            <h3 class="text-2xl font-bold font-serif text-white mt-1 mb-4">Заболочені угіддя Полісся (Переброди)</h3>
+            <img src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?q=80&w=800&auto=format&fit=crop" class="w-full h-48 object-cover rounded-2xl mb-4">
+            <div class="space-y-3 text-slate-300 text-sm leading-relaxed">
+                <p>Північна частина Рівненщини є однією з найзаболоченіших територій у Східній Європі. Заповідник «Переброди» охороняється Рамсарською конвенцією.</p>
+                <p>Ці болота виконують роль природного фільтра планети та підтримують водний баланс всього Поліського регіону. Тут ростуть рідкісні орхідеї, журавлина та мешкають чорні лелеки.</p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-emerald-800 flex justify-end">
+                <button onclick="closeModal('swamp-modal')" class="px-5 py-2 bg-amber-500 text-emerald-950 font-bold rounded-xl text-sm">Закрити</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fort Modal -->
+    <div id="fort-modal" class="modal fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="glass-card max-w-2xl w-full p-6 md:p-8 rounded-3xl border border-amber-500/40 relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal('fort-modal')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-2xl"><i class="fa-solid fa-xmark"></i></button>
+            <span class="text-xs font-bold text-amber-400 tracking-wider uppercase">Історична Фортеця</span>
+            <h3 class="text-2xl font-bold font-serif text-white mt-1 mb-4">Тараканівський Форт</h3>
+            <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=800&auto=format&fit=crop" class="w-full h-48 object-cover rounded-2xl mb-4">
+            <div class="space-y-3 text-slate-300 text-sm leading-relaxed">
+                <p>Тараканівський (Дубенський) форт поблизу села Тараканів — унікальна оборонна споруда, зведена у другій половині XIX століття для захисту залізничних колій.</p>
+                <p>Форт має форму ромба, розгалужену систему підземних коридорів, колодязів, складів та казематів. Це один з найвеличніших та найтаємничіших архітектурно-військових об'єктів України.</p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-emerald-800 flex justify-end">
+                <button onclick="closeModal('fort-modal')" class="px-5 py-2 bg-amber-500 text-emerald-950 font-bold rounded-xl text-sm">Закрити</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-emerald-950 border-t border-emerald-800/60 py-12 px-6 text-slate-400 text-sm">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-amber-500 flex items-center justify-center text-emerald-950 font-bold text-xl">
+                    <i class="fa-solid fa-earth-europe"></i>
+                </div>
+                <div>
+                    <span class="font-serif font-bold text-white text-base block">Географічні Рекорди Рівненщини</span>
+                    <span class="text-xs text-slate-400">Шкільний освітній інтерактивний проект</span>
+                </div>
+            </div>
+
+            <!-- Author Badge Prominent -->
+            <div class="glass-card px-6 py-3 rounded-2xl border border-amber-500/40 text-center">
+                <span class="text-xs text-slate-400 block uppercase tracking-widest">Автором та розробником проекту є:</span>
+                <span class="text-lg font-bold text-amber-300 font-serif">Герман Роман</span>
+            </div>
+
+            <div class="text-xs text-slate-400 text-center md:text-right">
+                <p>© 2026 Всі права захищено.</p>
+                <p class="mt-1 text-emerald-500">Створено з любов'ю до рідного краю 🌿</p>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Modals Toggle logic
+        function openModal(id) {
+            const modal = document.getElementById(id);
+            if(modal) {
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModal(id) {
+            const modal = document.getElementById(id);
+            if(modal) {
+                modal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Close modal on escape or background click
+        window.addEventListener('click', (e) => {
+            if(e.target.classList.contains('modal')) {
+                e.target.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Filtering Logic for Records
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const recordCards = document.querySelectorAll('.record-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-amber-500', 'text-emerald-950', 'shadow-lg');
+                    b.classList.add('glass-card', 'text-slate-300');
+                });
+                
+                btn.classList.add('bg-amber-500', 'text-emerald-950', 'shadow-lg');
+                btn.classList.remove('glass-card', 'text-slate-300');
+
+                const filter = btn.getAttribute('data-filter');
+
+                recordCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Coordinate Interactive display
+        function showCoord(title, coords, sub) {
+            document.getElementById('coordTitle').innerText = title;
+            document.getElementById('coordVal').innerText = coords;
+            document.getElementById('coordSub').innerText = sub;
+        }
+
+        // Quiz System Data & Logic
+        const quizData = [
+            {
+                question: "Яке озеро є найбільшим за площею в Рівненській області?",
+                options: ["Озеро Біле", "Озеро Нобель", "Озеро Світязь", "Озеро Базальтове"],
+                correct: 1
+            },
+            {
+                question: "Чим особлива вода в Озері Білому?",
+                options: ["Вона має срібний осад", "Містить високий рівень гліцерину", "Вона солона на смак", "Це гаряче термальне джерело"],
+                correct: 1
+            },
+            {
+                question: "Скільки приблизно років виповнилося Юзефінському дубу-патріарху?",
+                options: ["близько 300 років", "близько 500 років", "понад 1000 років", "2000 років"],
+                correct: 2
+            },
+            {
+                question: "В якому селищі розташована всесвітньо відома зелена арка «Тунель Кохання»?",
+                options: ["смт Клевань", "м. Дубно", "с. Тараканів", "м. Костопіль"],
+                correct: 0
+            }
+        ];
+
+        let currentQ = 0;
+        let score = 0;
+
+        function loadQuestion() {
+            const q = quizData[currentQ];
+            document.getElementById('questionNum').innerText = `Запитання ${currentQ + 1} з ${quizData.length}`;
+            document.getElementById('questionText').innerText = q.question;
+            
+            // Update progress bar width
+            const progressPct = ((currentQ + 1) / quizData.length) * 100;
+            document.getElementById('quizProgress').style.width = `${progressPct}%`;
+
+            const optionsContainer = document.getElementById('optionsContainer');
+            optionsContainer.innerHTML = '';
+
+            q.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full p-4 rounded-xl glass-card hover:bg-emerald-800/50 text-left text-slate-200 transition-all font-medium border border-emerald-700/30 flex justify-between items-center group";
+                btn.innerHTML = `
+                    <span>${opt}</span>
+                    <i class="fa-regular fa-circle text-slate-400 group-hover:text-amber-400"></i>
+                `;
+                btn.onclick = () => selectOption(idx, btn);
+                optionsContainer.appendChild(btn);
+            });
+
+            document.getElementById('nextBtn').classList.add('hidden');
+        }
+
+        function selectOption(index, element) {
+            const q = quizData[currentQ];
+            const allBtns = document.getElementById('optionsContainer').children;
+
+            // Disable all buttons
+            for (let btn of allBtns) {
+                btn.disabled = true;
+                btn.classList.add('opacity-70');
+            }
+
+            element.classList.remove('opacity-70');
+
+            if (index === q.correct) {
+                element.classList.add('bg-emerald-600/80', 'border-emerald-400', 'text-white');
+                element.querySelector('i').className = "fa-solid fa-circle-check text-emerald-300";
+                score++;
+            } else {
+                element.classList.add('bg-red-900/60', 'border-red-500', 'text-white');
+                element.querySelector('i').className = "fa-solid fa-circle-xmark text-red-400";
+                
+                // Show correct answer
+                allBtns[q.correct].classList.remove('opacity-70');
+                allBtns[q.correct].classList.add('bg-emerald-600/80', 'border-emerald-400');
+                allBtns[q.correct].querySelector('i').className = "fa-solid fa-circle-check text-emerald-300";
+            }
+
+            document.getElementById('nextBtn').classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            currentQ++;
+            if (currentQ < quizData.length) {
+                loadQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            document.getElementById('quizContainer').classList.add('hidden');
+            const resultDiv = document.getElementById('quizResult');
+            resultDiv.classList.remove('hidden');
+
+            document.getElementById('scoreText').innerText = `${score} з ${quizData.length}`;
+
+            const feedback = document.getElementById('feedbackText');
+            if (score === quizData.length) {
+                feedback.innerText = "Відмінно! Ви чудово знаєте географію Рівненщини! Вчителька буде в захваті!";
+            } else if (score >= 2) {
+                feedback.innerText = "Добре! Ви чудово орієнтуєтеся в головних рекордах краю.";
+            } else {
+                feedback.innerText = "Спробуйте ще раз! Прочитайте картки рекордів та покращіть свій результат.";
+            }
+        }
+
+        function restartQuiz() {
+            currentQ = 0;
+            score = 0;
+            document.getElementById('quizResult').classList.add('hidden');
+            document.getElementById('quizContainer').classList.remove('hidden');
+            loadQuestion();
+        }
+
+        // Initialize quiz on load
+        window.onload = function() {
+            loadQuestion();
+        }
+    </script>
+</body>
+</html>
